@@ -1,0 +1,6 @@
+flask
+pycopg2
+sqlalchemy
+geoalchemy2
+requests
+lxml
