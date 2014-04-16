@@ -20,13 +20,17 @@ $(function() {
 
     window.directionsDisplay = new google.maps.DirectionsRenderer();
     window.directionsService = new google.maps.DirectionsService();
-    directionsDisplay.setMap(map);
 
     window.locations = new ParkingLocations();
 
     window.markers = [];
 
     window.App.updateMap();
+
+    $(".btn-nodirections").hide();
+    $(".btn-nodirections").click(function() {
+        window.App.closeDirections();
+    });
 
     window.pos = {
         coords: {

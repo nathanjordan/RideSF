@@ -6,7 +6,6 @@
     <meta name="description" content="RideSF is a service that locates bike parking near you!">
     <meta name="author" content="Nathan Jordan">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-slider.min.css">
     <link rel="stylesheet" type="text/less" href="/assets/less/app.less">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
@@ -21,6 +20,7 @@
         <div class="col-md-8">
             <div id="map-canvas" class="map-canvas">
             </div>
+            <button class="btn btn-info btn-nodirections">Close Directions</button>
         </div>
         <div id="filter-box" class="col-md-4">
         </div>
@@ -35,7 +35,7 @@
             <span><%= model.get('parking_type') %></span>
             <h5>Placement</h5>
             <span><%= model.get('placement') %></span>
-            <button class="btn btn-danger">Directions</button>
+            <button class="btn btn-danger btn-directions" data-latitude="<%= latitude %>" data-longitude="<%= longitude %>" onclick="window.App.handleDirectionClick(this)">Directions</button>
         </div>
     </script>
     <script type="text/template" id="filters-template">
