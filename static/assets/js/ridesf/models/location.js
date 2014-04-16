@@ -7,5 +7,5 @@ ParkingLocations = Backbone.Collection.extend({
     model: Location,
     parse: function(data) {
         return data.results
-    },
+    }
 });

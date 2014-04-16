@@ -48,7 +48,7 @@ def get_parking_in_radius(location, radius):
         func.ST_DWithin(ParkingLocation.loc,
                         WKTElement('POINT(%f %f)' % (lon, lat),
                                    srid=4326),
-                        300)).all()
+                        radius)).all()
     model_list = list(res)
     return [serialize_parking_location(model) for model in model_list]
 

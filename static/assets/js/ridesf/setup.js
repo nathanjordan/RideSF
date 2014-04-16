@@ -6,12 +6,14 @@ $(function() {
     DEFAULT_LATITUDE = 37.790777;
     DEFAULT_LONGITUDE = -122.393235;
 
-    window.radius = 0;
+    window.radius = 200;
 
     var mapOptions = {
         center: new google.maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE),
         zoom: 16
     };
+
+    fv = new FilterView({ el: $("#filter-box")});
 
     window.map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
@@ -22,7 +24,9 @@ $(function() {
 
     window.locations = new ParkingLocations();
 
-    navigator.geolocation.getCurrentPosition(window.App.updatePosition);
+    window.markers = [];
+
+    window.App.updateMap();
 
     window.pos = {
         coords: {

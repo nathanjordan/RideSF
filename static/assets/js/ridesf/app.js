@@ -1,5 +1,9 @@
 window.App = {
-    updatePosition: function(pos) {
+    updateMap: function() {
+        window.App.clearMarkers();
+        navigator.geolocation.getCurrentPosition(window.App.handlePosition);
+    },
+    handlePosition: function(pos) {
         //TODO For Debugging
         //window.pos = pos;
         window.App.centerMap();
@@ -17,21 +21,7 @@ window.App = {
                            radius: window.radius}),
             success: function(collection, response) {
                 _.each(collection.models, function(model) {
-                    var latitude = model.get('location').coordinates[1];
-                    var longitude = model.get('location').coordinates[0];
-                    var title = model.get('loc_name');
-                    var tooltip = _.template($("#map-tooltip-template").html(), {model: model});
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(latitude, longitude),
-                        map: window.map,
-                        title: title
-                    });
-                    var infowindow = new google.maps.InfoWindow({
-                        content: tooltip
-                    });
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.open(window.map, marker);
-                    });
+                    window.App.generateMarker(model);
                 });
             }
         });
@@ -47,5 +37,31 @@ window.App = {
                 window.directionsDisplay.setDirections(result);
             }
         });
+    },
+    generateMarker: function(model) {
+        var latitude = model.get('location').coordinates[1];
+        var longitude = model.get('location').coordinates[0];
+        var title = model.get('loc_name');
+        var tooltip = _.template($("#map-tooltip-template").html(), {model: model});
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitude, longitude),
+            map: window.map,
+            icon: '/assets/img/marker.svg',
+            animation: google.maps.Animation.DROP
+        });
+        window.markers.push(marker);
+        var infowindow = new google.maps.InfoWindow({
+            content: tooltip
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(window.map, marker);
+        });
+    },
+    clearMarkers: function () {
+        for (var i = 0; i < window.markers.length; i++) {
+            var marker = window.markers[i];
+            marker.setMap(null);
+        }
+        window.markers.splice(0, window.markers.length);
     }
 };
