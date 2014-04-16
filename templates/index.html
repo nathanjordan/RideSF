@@ -18,7 +18,7 @@
             <h1><img class="header-logo" src="/assets/img/ridesf.svg" alt="RideSF"/><small>A SF Biking Community Project</small></h1>
         </div>
         <div class="col-md-8">
-            <div class="map-frame">
+            <div id="map-canvas" class="map-canvas">
             </div>
         </div>
         <div class="col-md-4">
@@ -31,10 +31,13 @@
             </form>
         </div>
     </div>
-    <script src="/assets/js/lib/less.min.js"></script>
+    <!-- vendor -->
+    <script src="/assets/js/vendor/less.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDoM0MSXgxCwO7Q3GsB9gGSsU9teNjuM&sensor=true"></script>
-    <script src="/assets/js/lib/jquery.min.js"></script>
-    <script src="/assets/js/lib/underscore.min.js"></script>
-    <script src="/assets/js/lib/backbone.min.js"></script>
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/underscore.min.js"></script>
+    <script src="/assets/js/vendor/backbone.min.js"></script>
+    <!-- ridesf -->
+    <script src="/assets/js/ridesf/models/location.js"></script>
 </body>
 </html>

@@ -57,6 +57,7 @@ def serialize_parking_location(model):
     geo_json = json.loads(model[1])
     model = model[0]
     loc = {
+        'id': model.id,
         'loc_name': model.loc_name,
         'address': model.address,
         'parking_type': model.parking_type,
@@ -65,3 +66,12 @@ def serialize_parking_location(model):
         'location': geo_json
     }
     return loc
+
+
+def get_location_by_id(id):
+    model = session.query(ParkingLocation,
+                          func.ST_AsGeoJSON(ParkingLocation.loc)).get(id)
+    if not model:
+        return None
+    else:
+        return serialize_parking_location(model)

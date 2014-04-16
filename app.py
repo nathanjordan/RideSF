@@ -8,8 +8,17 @@ app = Flask(__name__)
 app.debug = True
 
 
-@app.route('/parking', methods=['GET'])
-def parking_route():
+@app.route('/location/<int:id>')
+def parking_route(id):
+    loc = db.get_location_by_id(id)
+    if not loc:
+        return jsonify({'error': "No location with id %s exists" % id})
+    else:
+        return jsonify(loc)
+
+
+@app.route('/locations', methods=['GET'])
+def find_parking_route():
     if 'lat' not in request.args and 'lon' not in request.args:
         return jsonify({'error': "Query needs 'lat' and 'lon' args"})
     if 'meters' not in request.args:
