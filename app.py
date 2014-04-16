@@ -21,12 +21,12 @@ def parking_route(id):
 def find_parking_route():
     if 'lat' not in request.args and 'lon' not in request.args:
         return jsonify({'error': "Query needs 'lat' and 'lon' args"})
-    if 'meters' not in request.args:
-        return jsonify({'error': "Query needs 'meters' arg"})
+    if 'radius' not in request.args:
+        return jsonify({'error': "Query needs 'radius' arg"})
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
-    meters = float(request.args.get('meters'))
-    res = db.get_parking_in_radius((lat, lon), meters)
+    radius = float(request.args.get('radius'))
+    res = db.get_parking_in_radius((lat, lon), radius)
     return jsonify({'results': res})
 
 
