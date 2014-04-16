@@ -1,7 +1,17 @@
 window.App = {
     updateMap: function() {
         window.App.clearMarkers();
-        navigator.geolocation.getCurrentPosition(window.App.handlePosition);
+        navigator.geolocation.getCurrentPosition(
+            window.App.handlePosition,
+            window.App.handlePositionError,
+            {
+                enableHighAccurary: true,
+                timeout: 5000
+            }
+        );
+    },
+    handlePositionError: function(err) {
+        alert(error.message)
     },
     handleDirectionClick: function(e) {
         var latitude = parseFloat(e.attributes.getNamedItem("data-latitude").value);
