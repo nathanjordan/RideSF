@@ -52,9 +52,10 @@ window.App = {
             if (status == google.maps.DirectionsStatus.OK) {
                 window.directionsDisplay.setMap(map);
                 window.directionsDisplay.setDirections(result);
+                $(".btn-nodirections").show();
+                window.App.closeInfoWindows();
             }
         });
-        $(".btn-nodirections").show();
     },
     generateCenterMarker: function(latitude, longitude) {
         var marker = new google.maps.Marker({
@@ -87,17 +88,26 @@ window.App = {
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(window.map, marker);
         });
+        window.infoWindows.push(infowindow);
     },
     clearMarkers: function () {
-        for (var i = 0; i < window.markers.length; i++) {
-            var marker = window.markers[i];
+        _.each(window.markers, function(marker) {
             marker.setMap(null);
-        }
+        });
+        _.each(window.infoWindows, function(infoWindow) {
+            infoWindow.close();
+        });
         window.markers.splice(0, window.markers.length);
+        window.infoWindows.splice(0, window.infoWindows.length);
     },
     closeDirections: function() {
         window.directionsDisplay.setMap(null)
         window.map.setZoom(16);
         $(".btn-nodirections").hide();
+    },
+    closeInfoWindows: function () {
+        _.each(window.infoWindows, function(infoWindow) {
+            infoWindow.close();
+        });
     }
 };

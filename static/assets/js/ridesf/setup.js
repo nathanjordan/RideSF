@@ -18,12 +18,13 @@ $(function() {
     window.map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    window.directionsDisplay = new google.maps.DirectionsRenderer();
+    window.directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
     window.directionsService = new google.maps.DirectionsService();
 
     window.locations = new ParkingLocations();
 
     window.markers = [];
+    window.infoWindows = [];
 
     window.App.updateMap();
 
