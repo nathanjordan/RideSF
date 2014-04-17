@@ -1,11 +1,13 @@
 from flask import Flask, render_template, send_from_directory, jsonify, request
 import db
+import os
 
 # Create a new Flask server
 app = Flask(__name__)
 
 # Enable debugging
-app.debug = True
+if os.environ.get('DEBUG'):
+    app.debug = True
 
 
 @app.route('/location/<int:id>')
@@ -40,4 +42,4 @@ def serveStaticResource(resource):
     return send_from_directory('static/assets/', resource)
 
 if __name__ == "__main__":
-    app.run('localhost', 5000)
+    app.run('0.0.0.0', 5000)

@@ -6,8 +6,8 @@ from geoalchemy2 import Geography, func
 from geoalchemy2.elements import WKTElement
 import json
 
-engine = create_engine('postgresql://njordan:njordan@localhost/BikeSF',
-                       echo=True)
+
+engine = create_engine('postgresql://postgres:postgres@localhost/ridesf')
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()

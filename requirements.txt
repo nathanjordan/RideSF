@@ -1,5 +1,5 @@
 flask
-pycopg2
+psycopg2
 sqlalchemy
 geoalchemy2
 requests
