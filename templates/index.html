@@ -15,6 +15,7 @@
     <![endif]-->
 </head>
 <body>
+
     <div class="container">
         <div class="page-header">
             <h1><img class="header-logo" src="/assets/img/ridesf.svg" alt="RideSF"/><small>A SF Biking Community Project</small></h1>
@@ -27,6 +28,8 @@
         <div id="filter-box" class="col-md-4">
         </div>
     </div>
+
+    <!-- Map Tooltip template -->
     <script type="text/template" id="map-tooltip-template">
         <div class="map-tooltip">
             <h4><%= model.get('loc_name') %></h4>
@@ -40,6 +43,8 @@
             <button class="btn btn-danger btn-directions" data-latitude="<%= latitude %>" data-longitude="<%= longitude %>" onclick="window.App.handleDirectionClick(this)">Directions</button>
         </div>
     </script>
+
+    <!-- Filters template for Backbone View -->
     <script type="text/template" id="filters-template">
         <h2 class="filters">Filters</h2>
         <form role="form">
@@ -51,13 +56,14 @@
                     </div>
                 </div>
                 <div class="btn-group search-radius-buttons">
-                    <button type="button" class="btn btn-default search-radius-button btn-increase">Increase</button>
                     <button type="button" class="btn btn-default search-radius-button btn-decrease">Decrease</button>
+                    <button type="button" class="btn btn-default search-radius-button btn-increase">Increase</button>
                 </div>
                 <button type="button" class="btn btn-danger btn-update">Update</button>
             </div>
         </form>
     </script>
+
     <!-- Vendor Scripts-->
     <script src="/assets/js/vendor/less.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDoM0MSXgxCwO7Q3GsB9gGSsU9teNjuM&sensor=true"></script>
@@ -66,6 +72,7 @@
     <script src="/assets/js/vendor/underscore.min.js"></script>
     <script src="/assets/js/vendor/backbone.min.js"></script>
     <script src="/assets/js/vendor/bootstrap.min.js"></script>
+
     <!-- RideSF Scripts -->
     <script src="/assets/js/ridesf/views/filters.js"></script>
     <script src="/assets/js/ridesf/models/location.js"></script>

@@ -4,3 +4,4 @@ sqlalchemy
 geoalchemy2
 requests
 lxml
+nose
