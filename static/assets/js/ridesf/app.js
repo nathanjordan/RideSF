@@ -1,4 +1,62 @@
 window.App = {
+    initialize: function() {
+
+        DEFAULT_LATITUDE = 37.790777;
+        DEFAULT_LONGITUDE = -122.393235;
+
+        window.locations = new ParkingLocations();
+        window.radius = 200;
+        window.markers = [];
+        window.infoWindows = [];
+
+        fv = new FilterView({ el: $("#filter-box")});
+
+        $(".btn-nodirections").click(function() {
+            window.App.closeDirections();
+        });
+
+        window.pos = {
+            coords: {
+                latitude: DEFAULT_LATITUDE,
+                longitude: DEFAULT_LONGITUDE
+            }
+        }
+
+        window.App.initializeMap();
+        window.App.updateMap();
+    },
+    initializeMap: function() {
+
+        var mapStyles = [
+            {
+                stylers: [{ hue: "#c44d58" }, { saturation: -10 }]
+            },
+            {
+                featureType: "road",
+                elementType: "geometry",
+                stylers: [{lightness: 100}, {visibility: "simplified"}]
+            }
+        ];
+        var styledMap = new google.maps.StyledMapType(mapStyles, {name: "RideSF"});
+        var mapOptions = {
+            center: new google.maps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE),
+            zoom: 16,
+            mapTypeControlOptions: {
+                  mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+                }
+        };
+        window.map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        window.map.mapTypes.set('map_style', styledMap);
+        window.map.setMapTypeId('map_style');
+        var polylineOptions = new google.maps.Polyline({
+            strokeColor: '#556270',
+            strokeOpacity: 0.9,
+            strokeWeight: 12
+            });
+        window.directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true, polylineOptions: polylineOptions});
+        window.directionsService = new google.maps.DirectionsService();
+    },
     updateMap: function() {
         window.App.clearMarkers();
         navigator.geolocation.getCurrentPosition(
