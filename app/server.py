@@ -5,6 +5,12 @@ import os
 # Create a new Flask server
 app = Flask(__name__)
 
+# Create the database service
+if os.environ.get('TEST'):
+    app.database_service = db.MockDatabaseService()
+else:
+    app.database_service = db.DatabaseService()
+
 # Enable debugging if the DEBUG env is set
 if os.environ.get('DEBUG'):
     app.debug = True
@@ -13,7 +19,7 @@ if os.environ.get('DEBUG'):
 @app.route('/location/<int:id>')
 def parking_route(id):
     """ Route for getting a specific location """
-    loc = db.get_location_by_id(id)
+    loc = app.database_service.get_location_by_id(id)
     if not loc:
         return jsonify({'error': "No location with id %s exists" % id})
     else:
@@ -36,7 +42,7 @@ def find_parking_route():
     except ValueError:
         return jsonify({'error': "Invalid query parameters"})
     # Get and return the locations
-    res = db.get_parking_in_radius((lat, lon), radius)
+    res = app.database_service.get_parking_in_radius((lat, lon), radius)
     return jsonify({'results': res})
 
 

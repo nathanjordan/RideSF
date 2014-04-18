@@ -59,7 +59,8 @@ like creating markers and providing the user with directions. For styling
 I used LESS instead of raw CSS because it's more succinct and eliminates a lot
 of duplicate styling. I also made use of jQuery and Underscore as
 utility libraries in my Javascript code.  I created the logo and map markers
-in Adobe Illustrator. They are SVG's so they will scale to any size well.
+in Adobe Illustrator. They are SVG's so they will scale to any size well. I
+used Mocha as the testing framework for the client-side code.
 Below is a list of technologies I used for the front-end and my experience
 with them.
 
@@ -90,5 +91,6 @@ for dependency loading. I also would have implemented better testing.
 
 As for additional features, theres a few things I would add. I'd make it so you
 can add favorite parking spots, add the ability to filter by parking type and
-allow users to optionally see proposed parking spots (perhaps with a different 
-marker color).
+allow users to optionally see proposed parking spots (with a different
+marker color). A loading indicator would also be nice to show users that the
+app is still working and not broken while fetching the geolocation and markers.

@@ -9,6 +9,9 @@ FEED_URL = "https://data.sfgov.org/api/views/w969-5mn4/rows.xml"
 def update_bike_parking():
     """ Reads from the xml feed and adds entries to the database """
 
+    # Create a database service
+    database_service = db.DatabaseService()
+
     # Load the feed
     r = requests.get(FEED_URL)
 
@@ -30,9 +33,15 @@ def update_bike_parking():
         lat = row.find("coordinates").get("latitude")
         lon = row.find("coordinates").get("longitude")
         # Add to the database
-        db.create_location(loc_name=loc_name, parking_type=parking_type,
-                           placement=placement, status=status, address=address,
-                           lat=float(lat), lon=float(lon))
+        database_service.create_location(
+            loc_name=loc_name,
+            parking_type=parking_type,
+            placement=placement,
+            status=status,
+            address=address,
+            lat=float(lat),
+            lon=float(lon)
+        )
 
 # Update the DB if we're running this script directly
 if __name__ == "__main__":

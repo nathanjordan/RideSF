@@ -1,7 +1,13 @@
 import unittest
+import app.server
 
 
-class TestDatabaseFunctions(unittest.TestCase):
+class TestParkingRoute(unittest.TestCase):
 
-    def test_lolz(self):
+    def setUp(self):
+        app = app.server.app
+        app.testing = True
+        self.app = app.test_client()
+
+    def test_f(self):
         pass
