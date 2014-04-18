@@ -87,7 +87,12 @@ The first thing that irks me about this project is how I didn't make a
 backbone view for the map. I'm not sure if this would force the google maps
 api to redraw the entire map every time the view was re-rendered; a possible
 experiment in the future. I also would have used Require.js if I had more time
-for dependency loading. I also would have implemented better testing.
+for dependency loading. I also would have implemented better testing. Testing
+the database module became problematic since I needed to create a temporary
+sqlite database with spatial support from spatialite, which proved to be
+difficult. Attempting to load the spatialite extension results in a
+segmentation fault. As a result, I wasn't really able to test the database
+module.
 
 As for additional features, theres a few things I would add. I'd make it so you
 can add favorite parking spots, add the ability to filter by parking type and

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <row>
+        <row _id="1" _uuid="18C6427F-3BF4-4CDA-B531-28BECC05788A" _position="1" _address="http://data.sfgov.org/resource/w969-5mn4/1">
+            <location_name>John Muir and Skyline Blvd (Fort Funston, main lot)</location_name>
+            <yr_inst>None</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>PARCEL</placement>
+            <racks_installed>4</racks_installed>
+            <spaces>0</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>NPS</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>NPS</installed_by_2>
+            <yr_installed>2014</yr_installed>
+            <coordinates latitude="37.718951" longitude="-122.500339" needs_recoding="false" />
+        </row>
+        <row _id="2" _uuid="1952373E-23BE-474E-8AE5-7631DE973A32" _position="2" _address="http://data.sfgov.org/resource/w969-5mn4/2">
+            <location_name>Polo Field</location_name>
+            <yr_inst>None</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>PARCEL</placement>
+            <racks_installed>0</racks_installed>
+            <spaces>0</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>REC &amp; PARK</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>Rec &amp; Park</installed_by_2>
+            <yr_installed>2013</yr_installed>
+            <coordinates latitude="37.768270" longitude="-122.492460" needs_recoding="false" />
+        </row>
+        <row _id="3" _uuid="27975F4B-2EFD-4F1D-902B-D587CD758BB9" _position="3" _address="http://data.sfgov.org/resource/w969-5mn4/3">
+            <location_name>San Francisco Federal Union</location_name>
+            <yr_inst>2645 OCEAN AVE</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>SIDEWALK</placement>
+            <racks_installed>1</racks_installed>
+            <spaces>2</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>SFMTA</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>SFMTA</installed_by_2>
+            <yr_installed>2013</yr_installed>
+            <coordinates latitude="37.731654" longitude="-122.474188" needs_recoding="false" />
+        </row>
+        <row _id="4" _uuid="AF3BF247-11F1-49EE-8DCD-CD34F98C786A" _position="4" _address="http://data.sfgov.org/resource/w969-5mn4/4">
+            <location_name>Stanyan and Waller (Waller Street bicycle learning area and farmer's market)</location_name>
+            <yr_inst>None</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>PARCEL</placement>
+            <racks_installed>0</racks_installed>
+            <spaces>0</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>SFMTA</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>SFMTA</installed_by_2>
+            <yr_installed>2014</yr_installed>
+            <coordinates latitude="37.76825000" longitude="-122.45359000" needs_recoding="false" />
+        </row>
+        <row _id="5" _uuid="16AB2B31-6C48-4659-811F-D361A667EBB2" _position="5" _address="http://data.sfgov.org/resource/w969-5mn4/5">
+            <location_name>Magnolia Brewery</location_name>
+            <yr_inst>1398 HAIGHT ST</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>PARKING_LANE</placement>
+            <racks_installed>3</racks_installed>
+            <spaces>6</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>SFMTA</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>SFMTA</installed_by_2>
+            <yr_installed>2014</yr_installed>
+            <coordinates latitude="37.77040275" longitude="-122.44512989" needs_recoding="false" />
+        </row>
+        <row _id="6" _uuid="F01536A7-D27A-4EF6-8231-58E606665008" _position="6" _address="http://data.sfgov.org/resource/w969-5mn4/6">
+            <location_name>Buchanan YMCA</location_name>
+            <yr_inst>1530 BUCHANAN ST</yr_inst>
+            <bike_parking>RACK</bike_parking>
+            <placement>SIDEWALK</placement>
+            <racks_installed>0</racks_installed>
+            <spaces>0</spaces>
+            <status>IN_PROGRESS</status>
+            <status_detail>UPCOMING_INSTALLATION</status_detail>
+            <racks>TO BE INSTALLED SOON</racks>
+            <status_description>N/A</status_description>
+            <acting_agent>BUSINESS</acting_agent>
+            <action>5. INSTALL_BIKE_PARKING</action>
+            <installed_by_2>private (publicly accessible)</installed_by_2>
+            <yr_installed>n/a</yr_installed>
+            <coordinates latitude="37.784184" longitude="-122.429150" needs_recoding="false" />
+        </row>
+    </row>
+</response>

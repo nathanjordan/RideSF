@@ -28,7 +28,7 @@ class DatabaseService(object):
 
     def __init__(self):
         engine = self._create_alchemy_engine()
-        self.session = self._create_session()
+        self.session = self._create_session(engine)
         Base.metadata.create_all(engine)
 
     def _create_alchemy_engine(self):
@@ -102,3 +102,53 @@ class DatabaseService(object):
         # otherwise serialize the object
         else:
             return self._serialize_parking_location(model)
+
+    def __del__(self):
+        self.session.close()
+
+
+class MockDatabaseService(DatabaseService):
+
+    def __init__(self):
+        self.parking_locations = []
+        model1 = ParkingLocation(
+            id=1,
+            loc_name="Test Location",
+            address="976 Harrison Street",
+            parking_type="RACK",
+            placement="SIDEWALK",
+            status="INSTALLED",
+            loc="Point(%f %f)" % (37.777695, -122.403748)
+        )
+        model2 = ParkingLocation(
+            id=2,
+            loc_name="Test Location 2",
+            address="420 Folsom Street",
+            parking_type="RACK",
+            placement="SIDEWALK",
+            status="INSTALLED",
+            loc="Point(%f %f)" % (37.777695, -122.403748)
+        )
+        self.parking_locations = [model1, model2]
+
+    def get_location_by_id(self, id):
+        geo = {
+            "coords": [
+                37.777695,
+                -122.403748
+            ]
+        }
+        for loc in self.parking_locations:
+            if loc.id == id:
+                return self._serialize_parking_location((loc, json.dumps(geo)))
+        return None
+
+    def get_parking_in_radius(self, location, radius):
+        pass
+
+    def create_location(self, loc_name, address, parking_type, placement,
+                        status, lat, lon):
+        return
+
+    def __del__(self):
+        return

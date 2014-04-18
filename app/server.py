@@ -2,8 +2,20 @@ from flask import Flask, render_template, send_from_directory, jsonify, request
 import db
 import os
 
+# set the template directory
+tmpl_dir = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    '../',
+    'templates')
+
+# set the static directory
+static_dir = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    '../',
+    'static')
+
 # Create a new Flask server
-app = Flask(__name__)
+app = Flask(__name__, template_folder=tmpl_dir)
 
 # Create the database service
 if os.environ.get('TEST'):
@@ -39,7 +51,7 @@ def find_parking_route():
         lat = float(request.args.get('lat'))
         lon = float(request.args.get('lon'))
         radius = float(request.args.get('radius'))
-    except ValueError:
+    except TypeError:
         return jsonify({'error': "Invalid query parameters"})
     # Get and return the locations
     res = app.database_service.get_parking_in_radius((lat, lon), radius)
@@ -47,15 +59,15 @@ def find_parking_route():
 
 
 @app.route('/', methods=['GET'])
-def index():
+def index_route():
     """ Return the view of the application """
     return render_template('index.html')
 
 
 @app.route('/assets/<path:resource>')
-def serveStaticResource(resource):
+def serve_static_resource(resource):
     """ Serve static resources like images/css/scripts """
-    return send_from_directory('static/assets/', resource)
+    return send_from_directory(static_dir + '/assets/', resource)
 
 # Start the server if we're running this file
 if __name__ == "__main__":
