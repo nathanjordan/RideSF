@@ -20,11 +20,11 @@ app = Flask(__name__, template_folder=tmpl_dir)
 # Create the database service
 if os.environ.get('TEST'):
     app.database_service = db.MockDatabaseService()
-else:
+else:  # pragma: no cover
     app.database_service = db.DatabaseService()
 
 # Enable debugging if the DEBUG env is set
-if os.environ.get('DEBUG'):
+if os.environ.get('DEBUG'):  # pragma: no cover
     app.debug = True
 
 
@@ -70,5 +70,5 @@ def serve_static_resource(resource):
     return send_from_directory(static_dir + '/assets/', resource)
 
 # Start the server if we're running this file
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     app.run('0.0.0.0', 5000)

@@ -15,11 +15,11 @@ test_dir = os.path.join(
 
 class FeedLoader(object):
 
-    def get_feed(self):
+    def get_feed(self):  # pragma: no cover
         return requests.get(FEED_URL).text
 
 
-class TestFeedLoader(FeedLoader):
+class TestFeedLoader(FeedLoader):  # pragma: no cover
 
     FEED_GOOD = "test_feed.xml"
     FEED_BAD_XML = "test_feed_bad_xml.xml"
@@ -32,7 +32,7 @@ class TestFeedLoader(FeedLoader):
         return open(test_dir + '/' + self.feed_filename).read()
 
 
-class BadFeedException(Exception):
+class BadFeedException(Exception):  # pragma: no cover
 
     def __init__(self, value):
         self.value = value
@@ -76,20 +76,24 @@ class FeedProcessor(object):
             except AttributeError:
                 continue
             # Add to the database
-            self.db_service.create_location(
-                loc_name=loc_name,
-                parking_type=parking_type,
-                placement=placement,
-                status=status,
-                address=address,
-                lat=float(lat),
-                lon=float(lon)
-            )
+            try:
+                self.db_service.create_location(
+                    loc_name=loc_name,
+                    parking_type=parking_type,
+                    placement=placement,
+                    status=status,
+                    address=address,
+                    lat=float(lat),
+                    lon=float(lon)
+                )
+            # likewise, skip over bad rows
+            except Exception:
+                continue
             record_count += 1
         return record_count
 
 # Update the DB if we're running this script directly
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     # Clear the existing data
     db.clear_data()
     # create a new feed processor

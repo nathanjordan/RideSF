@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import Column, Integer, String
 from geoalchemy2 import Geography, func
 from geoalchemy2.elements import WKTElement
@@ -28,6 +29,7 @@ class DatabaseService(object):
 
     def __init__(self):
         engine = self._create_alchemy_engine()
+        self.engine = engine
         self.session = self._create_session(engine)
         Base.metadata.create_all(engine)
 
@@ -49,10 +51,13 @@ class DatabaseService(object):
                              status=status, loc="Point(%f %f)" % (lon, lat))
         self.session.add(pl)
         self.session.commit()
+        self.session.refresh(pl)
+        return pl.id
 
     def clear_data(self):
         """ Clears the parking location data from the database """
         self.session.query(ParkingLocation).delete()
+        self.session.commit()
 
     def get_parking_in_radius(self, location, radius):
         """ Gets parking spots around a location within a radius specified in
@@ -93,15 +98,16 @@ class DatabaseService(object):
 
     def get_location_by_id(self, id):
         """ Gets a parking location by its ID """
-        model = self.session.query(
-            ParkingLocation,
-            func.ST_AsGeoJSON(ParkingLocation.loc)).get(id)
+        try:
+            model = self.session.query(
+                ParkingLocation,
+                func.ST_AsGeoJSON(ParkingLocation.loc)).filter(
+                ParkingLocation.id == id).one()
         # If we didn't get anything, return None
-        if not model:
+        except NoResultFound:
             return None
         # otherwise serialize the object
-        else:
-            return self._serialize_parking_location(model)
+        return self._serialize_parking_location(model)
 
     def __del__(self):
         self.session.close()
