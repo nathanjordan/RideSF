@@ -6,7 +6,7 @@ env:
 install: pip install -r requirements-test.txt
 before_script:
   - psql -U postgres -c 'create database ridesf_test;'
-  - psql -U postgres -c "create extension postgis"
+  - psql -U postgres -c "create extension postgis;" -d ridesf_test
 script:  nosetests tests/ --with-coverage
 after_script:
   coveralls
