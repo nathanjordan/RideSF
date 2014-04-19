@@ -33,7 +33,7 @@ class DatabaseService(object):
         self.session = self._create_session(engine)
         Base.metadata.create_all(engine)
 
-    def _create_alchemy_engine(self):
+    def _create_alchemy_engine(self):  # pragma: no cover
         # Create database engine
         return create_engine('postgresql://postgres:postgres@localhost/ridesf')
 
@@ -109,7 +109,7 @@ class DatabaseService(object):
         # otherwise serialize the object
         return self._serialize_parking_location(model)
 
-    def __del__(self):
+    def __del__(self):  # pragma: no cover
         self.session.close()
 
 

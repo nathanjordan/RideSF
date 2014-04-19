@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title> Tests </title>
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+        <div id=""></div>
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/chai/chai.js"></script>
+        <script>
+            mocha.ui('bdd');
+            mocha.reporter('html');
+            var assert = chai.assert;
+        </script>
+        <script src="../static/assets/js/vendor/jquery.min.js"></script>
+        <script src="../static/assets/js/vendor/underscore.min.js"></script>
+        <script src="../static/assets/js/vendor/backbone.min.js"></script>
+        <script src="../static/assets/js/ridesf/views/filters.js"></script>
+        <script src="../static/assets/js/ridesf/models/location.js"></script>
+        <script src="../static/assets/js/ridesf/app.js"></script>
+        <script src="../static/assets/js/ridesf/setup.js"></script>
+        <script src="test_app.js"></script>
+        <script>
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
+        </script>
+    </body>
+</html>

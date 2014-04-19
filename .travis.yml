@@ -7,6 +7,10 @@ install: pip install -r requirements-test.txt
 before_script:
   - psql -U postgres -c 'create database ridesf_test;'
   - psql -U postgres -c "create extension postgis;" -d ridesf_test
-script:  nosetests tests/ --with-coverage
+  - source ~/.nvm/nvm.sh
+  - nvm install 0.10
+  - nvm use 0.10
+  - npm install
+script:  nosetests tests/ --with-coverage && mocha-phantomjs tests/test_app.html --reporter dot
 after_script:
   coveralls

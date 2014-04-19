@@ -1,0 +1,17 @@
+{
+  "name": "RideSF",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "blanket": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*",
+    "phantomjs": "*",
+    "mocha-phantomjs": "*"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "tests/*.js"
+    }
+  }
+}
