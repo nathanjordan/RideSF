@@ -10,7 +10,7 @@ class TestDatabaseService(DatabaseService):
         super(TestDatabaseService, self).__init__()
         self.clear_data()
         model1 = ParkingLocation(
-            id=1,
+            id=7,
             loc_name="Test Location",
             address="984 Harrison Street",
             parking_type="RACK",
@@ -19,7 +19,7 @@ class TestDatabaseService(DatabaseService):
             loc="Point(%f %f)" % (-122.403748, 37.777695)
         )
         model2 = ParkingLocation(
-            id=2,
+            id=8,
             loc_name="Test Location 2",
             address="420 Folsom Street",
             parking_type="RACK",
@@ -28,7 +28,7 @@ class TestDatabaseService(DatabaseService):
             loc="Point(%f %f)" % (-122.3940241, 37.7877584)
         )
         model3 = ParkingLocation(
-            id=3,
+            id=9,
             loc_name="Test Location 3",
             address="806 S Van Ness Ave",
             parking_type="RACK",
@@ -110,8 +110,9 @@ class ParkingLocatorTests(DBTest):
 class LocByIDTests(DBTest):
 
     def test_by_id_found(self):
-        loc = self.db_service.get_location_by_id(1)
-        self.assertTrue(loc['id'] == 1)
+        loc = self.db_service.get_location_by_id(8)
+        self.assertTrue(loc)
+        self.assertTrue(loc['id'] == 8)
 
     def test_by_id_not_found(self):
         loc = self.db_service.get_location_by_id(0)
