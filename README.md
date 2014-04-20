@@ -60,9 +60,11 @@ I used LESS instead of raw CSS because it's more succinct and eliminates a lot
 of duplicate styling. I also made use of jQuery and Underscore as
 utility libraries in my Javascript code.  I created the logo and map markers
 in Adobe Illustrator. They are SVG's so they will scale to any size well. I
-used Mocha as the testing framework for the client-side code.
-Below is a list of technologies I used for the front-end and my experience
-with them.
+used Mocha as the testing framework for the client-side code. I also made use
+of the Chai assertion library and Sinon for function spying in test cases. Mocha
+lets you test in a browser and in a headless environment like PhantomJS which
+makes it ideal for testing on Travis. Below is a list of technologies I used
+for the front-end and my experience with them.
 
 * Bootstrap (Proficient)
 * Backbone (Never used before, I've always used Angular)
@@ -70,6 +72,15 @@ with them.
 * LESS (Somewhat experienced)
 * Google Maps JS API (Never used before)
 * Underscore (Proficient)
+* Node (Proficient)
+* Mocha (Novice)
+* Chai (Never used before)
+* Sinon (Never used before)
+
+### Testing
+
+I used Travis-CI for running the tests and calculated coverage. Coverage is
+reported to Coveralls to track coverage over time.
 
 ### Hosting
 
@@ -87,7 +98,11 @@ The first thing that irks me about this project is how I didn't make a
 backbone view for the map. I'm not sure if this would force the google maps
 api to redraw the entire map every time the view was re-rendered; a possible
 experiment in the future. I also would have used Require.js if I had more time
-for dependency loading. I also would have implemented more thurough testing.
+for dependency loading. I also would have implemented more thorough testing.
+Due to time constraints I wasn't able to get the client-side testing completely
+working, so there are some functions that are not adequately tested. Also, I
+wasn't entirely sure how to combine coverage stats for Python and Javascript
+so the coverage reported is the Python code coverage.
 
 As for additional features, theres a few things I would add. I'd make it so you
 can add favorite parking spots, add the ability to filter by parking type and
