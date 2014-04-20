@@ -180,7 +180,7 @@ window.App = {
         var request = {
             origin: window.pos.coords.latitude + ', ' + window.pos.coords.longitude,
             destination: destination.loc.coordinates[1] + ', ' + destination.loc.coordinates[0],
-            travelMode: google.maps.TravelMode.DRIVING
+            travelMode: google.maps.TravelMode.BICYCLING
         };
 
         // kindly ask google maps to route them
