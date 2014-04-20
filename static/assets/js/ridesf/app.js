@@ -113,15 +113,16 @@ window.App = {
     handlePositionError: function(err) {
         // Make a javascript alert (gross!)
         // TODO: Make this a bootstrap alert
-        alert(error.message)
+        alert(err.message)
     },
 
     /*
      *   Handles when the user clicks on 'Directions' on the map
      */
-    handleDirectionClick: function(e) {
-        var latitude = parseFloat(e.attributes.getNamedItem("data-latitude").value);
-        var longitude = parseFloat(e.attributes.getNamedItem("data-longitude").value);
+    handleDirectionClick: function(element) {
+        var element = $(element);
+        var latitude = parseFloat(element.attr("data-latitude"));
+        var longitude = parseFloat(element.attr("data-longitude"));
         // Request directions
         window.App.getDirections({loc: {coordinates: [longitude, latitude]}});
     },
@@ -179,7 +180,7 @@ window.App = {
         var request = {
             origin: window.pos.coords.latitude + ', ' + window.pos.coords.longitude,
             destination: destination.loc.coordinates[1] + ', ' + destination.loc.coordinates[0],
-            travelMode: google.maps.TravelMode.DRIVING
+            travelMode: google.maps.TravelMode.BICYCLING
         };
 
         // kindly ask google maps to route them

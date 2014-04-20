@@ -7,7 +7,9 @@
     "coveralls": "*",
     "mocha-lcov-reporter": "*",
     "phantomjs": "*",
-    "mocha-phantomjs": "*"
+    "mocha-phantomjs": "*",
+    "sinon": "*",
+    "sinon-chai": "*"
   },
   "config": {
     "blanket": {
