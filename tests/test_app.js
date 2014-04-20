@@ -128,7 +128,7 @@ describe('App', function() {
     });
     describe('fetchMarkers', function() {
         var s1, s2;
-        var model = new ParkingLocation({
+        var model = new Location({
             loc_name: "Test",
             address: "Test 2",
             parking_type: "RACK",
@@ -141,6 +141,7 @@ describe('App', function() {
                 ]
             }
         });
+        window.locations = new ParkingLocations();
         window.locations.add(model);
         before(function() {
             s1 = sinon.spy(window.locations, 'fetch');
@@ -203,7 +204,7 @@ describe('App', function() {
     });
     describe('generateMarker', function() {
         var s1, s2, s3, s4, s5;
-        var model = new ParkingLocation({
+        var model = new Location({
             loc_name: "Test",
             address: "Test 2",
             parking_type: "RACK",
