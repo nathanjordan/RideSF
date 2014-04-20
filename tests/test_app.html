@@ -1,29 +1,67 @@
 <html>
     <head>
-        <title> Tests </title>
+        <title>Tests</title>
         <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
     </head>
     <body>
         <div id="mocha"></div>
-        <div id=""></div>
+        <div id="map-canvas" style="display: none;"></div>
+        <div id="filter-box" style="display: none;"></div>
+        <div id="directions-button" data-latitude="1.0" data-longitude="1.0"></div>
         <script src="../node_modules/mocha/mocha.js"></script>
         <script src="../node_modules/chai/chai.js"></script>
+        <script src="../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+        <script src="../node_modules/sinon/pkg/sinon.js"></script>
         <script>
             mocha.ui('bdd');
             mocha.reporter('html');
             var assert = chai.assert;
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDoM0MSXgxCwO7Q3GsB9gGSsU9teNjuM&sensor=true"></script>
         <script src="../static/assets/js/vendor/jquery.min.js"></script>
         <script src="../static/assets/js/vendor/underscore.min.js"></script>
         <script src="../static/assets/js/vendor/backbone.min.js"></script>
         <script src="../static/assets/js/ridesf/views/filters.js"></script>
         <script src="../static/assets/js/ridesf/models/location.js"></script>
         <script src="../static/assets/js/ridesf/app.js"></script>
-        <script src="../static/assets/js/ridesf/setup.js"></script>
         <script src="test_app.js"></script>
         <script>
+            window.alert = function() {};
             if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
             else { mocha.run(); }
+        </script>
+        <!-- Map Tooltip template -->
+        <script type="text/template" id="map-tooltip-template">
+            <div class="map-tooltip">
+                <h4><%= model.get('loc_name') %></h4>
+                <hr/>
+                <h5>Address</h5>
+                <span><%= model.get('address') %></span>
+                <h5>Parking Type</h5>
+                <span><%= model.get('parking_type') %></span>
+                <h5>Placement</h5>
+                <span><%= model.get('placement') %></span>
+                <button class="btn btn-danger btn-directions" data-latitude="<%= latitude %>" data-longitude="<%= longitude %>" onclick="window.App.handleDirectionClick(this)">Directions</button>
+            </div>
+        </script>
+        <!-- Filters template for Backbone View -->
+        <script type="text/template" id="filters-template">
+            <h2 class="filters">Filters</h2>
+            <form role="form">
+                <div class="form-group">
+                    <label>Search Radius</label>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="500" style="width: <%= percent %>%;">
+                        <%= radius %>m
+                        </div>
+                    </div>
+                    <div class="btn-group search-radius-buttons">
+                        <button type="button" class="btn btn-default search-radius-button btn-decrease">Decrease</button>
+                        <button type="button" class="btn btn-default search-radius-button btn-increase">Increase</button>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-update">Update</button>
+                </div>
+            </form>
         </script>
     </body>
 </html>
