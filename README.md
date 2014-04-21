@@ -33,7 +33,7 @@ because of the GIS features that are provided by PostGIS such as distance
 queries that were very useful for this application. There is also a 'feed'
 module that makes a request to the data.sfgov website to get the parking
 data from an XML feed.
-I chose the XML feed in leiu of the JSON one because it seemed to be structured
+I chose the XML feed in lieu of the JSON one because it seemed to be structured
 in a less confusing manner (the JSON feed has a bunch of metadata that needs
 to be analyzed to get the right columns, etc.). To handle the testing and
 coverage percentage I used the Nose test runner with the standard unittest
@@ -97,8 +97,8 @@ The applications GitHub repository is located at:
 ### Project Notes
 
 The first thing that irks me about this project is how I didn't make a
-backbone view for the map. I'm not sure if this would force the google maps
-api to redraw the entire map every time the view was re-rendered; a possible
+backbone view for the map. I'm not sure if this would force the Google Maps
+API to redraw the entire map every time the view was re-rendered; a possible
 experiment in the future. I also would have used Require.js if I had more time
 for dependency loading and Grunt for task running like js minification and LESS
 compiling. I also would have implemented more thorough testing.
