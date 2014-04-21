@@ -139,8 +139,7 @@ App = (function() {
          *   Handles when geolocation is acquired
          */
         handlePosition: function(pos) {
-            //TODO No refresh (No bike parking in Reno!)
-            //window.pos = pos;
+            window.pos = pos;
 
             //center the map on the new position
             window.App.centerMap();
