@@ -112,3 +112,19 @@ can add favorite parking spots, add the ability to filter by parking type and
 allow users to optionally see proposed parking spots (with a different
 marker color). A loading indicator would also be nice to show users that the
 app is still working and not broken while fetching the geolocation and markers.
+
+### Other
+
+LinkedIn profile:
+
+https://www.linkedin.com/in/jordann4
+
+I've been working on a number or projects related to the brain computation lab that I currently work in as well as a web crawler for journalists. Here are some links to those projects.
+
+https://github.com/BrainComputationLab/pyncs
+https://github.com/BrainComputationLab/ncs-daemon
+https://github.com/nathanjordan/bernstein
+
+Other projects can be found on my GitHub:
+
+https://github.com/nathanjordan
